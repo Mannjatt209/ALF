@@ -75,6 +75,16 @@ _TEMPLATE = r"""<!doctype html>
   .msg .crit { color: #34d399; }
   .dry { font-size: 10px; color: #ffd77a; border: 1px solid #6b5410; border-radius: 4px;
          padding: 1px 6px; }
+  .actions { display: flex; gap: 8px; padding: 0 12px 12px; }
+  .actions button { flex: 1; padding: 8px 0; font-size: 13px; }
+  .b-admit { background: #16a34a; }
+  .b-decline { background: #3a1622; color: #ffb4c8; }
+  .verdict { padding: 8px 12px 12px; font-size: 13px; font-weight: 700; }
+  .verdict.admit { color: #34d399; } .verdict.decline { color: #ff7aa8; }
+  .msg.responded { opacity: .85; }
+  .pill.admitted { background: #16a34a; color: #fff; }
+  .pill.declined { background: #3a1622; color: #ffb4c8; }
+  .board-row.admitted { background: #0d2c1c; box-shadow: inset 3px 0 0 #16a34a; }
   .empty { padding: 16px; color: #5d6b88; font-size: 13px; }
 </style>
 </head>
@@ -95,6 +105,8 @@ _TEMPLATE = r"""<!doctype html>
     <div class="stat"><div class="n" id="s-scan">0</div><div class="l">Scanned</div></div>
     <div class="stat flag"><div class="n" id="s-flag">0</div><div class="l">Met criteria</div></div>
     <div class="stat"><div class="n" id="s-msg">0</div><div class="l">Alerts sent (dry-run)</div></div>
+    <div class="stat"><div class="n" id="s-adm" style="color:#34d399">0</div><div class="l">Admitted by MD</div></div>
+    <div class="stat"><div class="n" id="s-dec" style="color:#f0a">0</div><div class="l">Declined by MD</div></div>
   </div>
   <div class="grid">
     <div class="panel">
@@ -147,7 +159,8 @@ function screen(p){ return CRITERIA.rulesets.map(r=>matchRule(p,r)).filter(Boole
 
 // --- UI / simulation ---
 const $=id=>document.getElementById(id);
-let speed=1, timers=[], state={board:0,scan:0,flag:0,msg:0};
+let speed=1, timers=[], state={board:0,scan:0,flag:0,msg:0,adm:0,dec:0};
+let msgSeq=0;
 const SPEEDS=[1,2,4];
 
 function clock(){ const d=new Date(); return d.toLocaleTimeString(); }
@@ -160,25 +173,51 @@ function feed(html){
 }
 function reset(){
   timers.forEach(clearTimeout); timers=[];
-  state={board:0,scan:0,flag:0,msg:0};
-  ['s-board','s-scan','s-flag','s-msg'].forEach(i=>$(i).textContent='0');
+  state={board:0,scan:0,flag:0,msg:0,adm:0,dec:0}; msgSeq=0;
+  ['s-board','s-scan','s-flag','s-msg','s-adm','s-dec'].forEach(i=>$(i).textContent='0');
   $('board').innerHTML='<div class="empty">Press “Start shift” to begin…</div>';
   $('msgs').innerHTML='<div class="empty">No alerts yet.</div>';
   $('feed').innerHTML='<div class="empty">Idle.</div>';
   $('start').disabled=false;
 }
-function addMessage(p, matches){
+function addMessage(rowIdx, p, matches){
   const m=$('msgs'); if(m.querySelector('.empty')) m.innerHTML='';
   const primary=matches[0];
   const contact=ONCALL[primary.service]||{physician:'On-Call Hospitalist',handle:'hospitalist-oncall'};
   const crit=matches.map(x=>'  • '+x.label+' → recommend '+x.status).join('\n');
-  const el=document.createElement('div'); el.className='msg';
+  const mid='msg-'+(msgSeq++);
+  const el=document.createElement('div'); el.className='msg'; el.id=mid;
   el.innerHTML='<div class="head"><span>To: '+contact.physician+' &lt;'+contact.handle+'&gt;</span>'
     +'<span class="dry">DRY-RUN</span></div>'
     +'<div class="body">'+p.name+'  MRN '+p.mrn+'  ('+p.age+p.sex+')  ·  '+p.bed+'\n'
     +p.chief_complaint+'\n<span class="crit">'+crit+'</span>\n\n'
-    +'Reply ADMIT / DECLINE — decision support only.</div>';
+    +'Physician response (tap to close the loop):</div>'
+    +'<div class="actions">'
+    +'<button class="b-admit" id="'+mid+'-a">✓ ADMIT</button>'
+    +'<button class="b-decline" id="'+mid+'-d">✕ DECLINE</button></div>';
   m.prepend(el);
+  // Physician taps a decision — the human-in-the-loop closing the loop.
+  $(mid+'-a').onclick=()=>respond(mid, rowIdx, p, true);
+  $(mid+'-d').onclick=()=>respond(mid, rowIdx, p, false);
+}
+function respond(mid, rowIdx, p, admit){
+  const el=$(mid); if(!el || el.classList.contains('responded')) return;
+  el.classList.add('responded');
+  const actions=el.querySelector('.actions'); if(actions) actions.remove();
+  const v=document.createElement('div');
+  v.className='verdict '+(admit?'admit':'decline');
+  v.textContent=admit ? '✓ ADMITTED by '+ (p.physician||'physician') +' — bed request placed'
+                      : '✕ Declined — left in ED for further workup';
+  el.appendChild(v);
+  // Update the trackboard row.
+  const row=$('row-'+rowIdx), pill=$('pill-'+rowIdx);
+  if(admit){ if(row) row.classList.add('admitted');
+    if(pill){ pill.className='pill admitted'; pill.textContent='ADMITTED'; }
+    bump('adm','s-adm'); feed('🏥 <b>MD admitted</b> '+p.name+' ('+p.bed+') — bed request placed. [audit logged]');
+  } else {
+    if(pill){ pill.className='pill declined'; pill.textContent='declined'; }
+    bump('dec','s-dec'); feed('↩︎ <b>MD declined</b> '+p.name+' ('+p.bed+') — remains in ED. [audit logged]');
+  }
 }
 function schedule(fn,ms){ const t=setTimeout(fn, ms/speed); timers.push(t); }
 
@@ -209,7 +248,7 @@ function run(){
           pill.className='pill flag'; pill.textContent='MEETS CRITERIA';
           bump('flag','s-flag');
           feed('✅ <b>'+p.name+'</b> meets: '+matches.map(m=>m.label).join(', ')+' — alerting on-call.');
-          schedule(()=>{ addMessage(p,matches); bump('msg','s-msg');
+          schedule(()=>{ addMessage(i,p,matches); bump('msg','s-msg');
             feed('📨 Secure dry-run alert sent to '+(ONCALL[matches[0].service]||{physician:'on-call'}).physician+'.'); }, 500);
         } else {
           pill.className='pill clear'; pill.textContent='no criteria';

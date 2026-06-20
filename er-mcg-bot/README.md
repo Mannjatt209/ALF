@@ -49,11 +49,46 @@ python -m src.ermcgbot.cli --live live_demo.html
 
 Open `live_demo.html` in any browser and press **Start shift**. Patients arrive
 on the trackboard over time; the bot scans each one and fires a dry-run secure
-message to the on-call physician when criteria are met. It's a single
-self-contained file (no server, no network) that embeds the same synthetic data
-and criteria the Python engine uses — the in-browser screening logic mirrors
-`criteria_engine.py`, so the demo and backend can't drift (both flag 8 of 12).
-This is the version to project in the admin meeting.
+message to the on-call physician when criteria are met. Each alert has **ADMIT /
+DECLINE** buttons — tapping one closes the human-in-the-loop: it updates the
+trackboard row, logs the response, and ticks the "Admitted / Declined by MD"
+counters. That is the whole safety model in one gesture: the bot surfaces the
+candidate, the physician decides.
+
+It's a single self-contained file (no server, no network) that embeds the same
+synthetic data and criteria the Python engine uses — the in-browser screening
+logic mirrors `criteria_engine.py`, so the demo and backend can't drift (both
+flag 8 of 12). This is the version to project in the admin meeting.
+
+## Connecting to your EHR (Pulsecheck, Epic, Cerner)
+
+The screening logic is decoupled from the data source by a `TrackboardFeed`
+interface (`src/ermcgbot/feeds/`). Every adapter normalizes its EHR's data into
+the same `Patient` model, so nothing downstream changes when you switch vendors.
+
+| `--feed` | Source | Transport | Status in prototype |
+|---|---|---|---|
+| `synthetic` | Bundled fake board | JSON file | Fully working |
+| `epic` | Epic | SMART-on-FHIR **R4** | Mapping working (offline replay of a FHIR bundle); live transport gated on creds + BAA |
+| `cerner` | Cerner / Oracle Health | SMART-on-FHIR **R4** | Same shared R4 mapper as Epic |
+| `pulsecheck` / `hl7` | Pulsecheck / interface engine | **HL7v2 ADT** | Demographics + location parsed; clinical values need an ORU results feed |
+
+Try the adapters offline (no credentials needed):
+
+```bash
+python -m src.ermcgbot.cli --feed epic        # replays data/sample_fhir_bundle.json
+python -m src.ermcgbot.cli --feed cerner       # same FHIR R4 mapper
+python -m src.ermcgbot.cli --feed pulsecheck   # parses data/sample_pulsecheck_adt.hl7
+```
+
+**What's real vs. stubbed:** the FHIR→Patient mapping (LOINC-coded vitals/labs,
+location, chief complaint, flags) is real and unit-tested against a sample R4
+bundle. The *live network transport* is deliberately disabled — turning it on
+needs a SMART backend-services client, the hospital's FHIR base URL + scopes,
+and a BAA. Epic and Cerner share one mapper because both expose FHIR R4 with the
+same resource shapes; Pulsecheck's HL7 ADT path shows the honest limitation that
+ADT carries demographics/location only (the `pulsecheck` demo flags 0 patients
+because no labs arrive over ADT — those come from a separate ORU/results feed).
 
 ### Run the tests
 
@@ -76,18 +111,28 @@ the swap to licensed criteria is a drop-in.
 
 ```
 er-mcg-bot/
-  criteria/demo_criteria.json     # illustrative rules (NOT MCG)
-  data/synthetic_patients.json    # fake ED trackboard
-  data/on_call.json               # fake on-call roster (secure handles, not phones)
+  criteria/demo_criteria.json       # illustrative rules (NOT MCG)
+  data/synthetic_patients.json      # fake ED trackboard
+  data/sample_fhir_bundle.json      # fake FHIR R4 bundle (Epic/Cerner demo)
+  data/sample_pulsecheck_adt.hl7    # fake HL7v2 ADT messages (Pulsecheck demo)
+  data/on_call.json                 # fake on-call roster (secure handles, not phones)
   src/ermcgbot/
     models.py            # Patient, ScreeningResult, MatchedCriterion
     criteria_engine.py   # config-driven rules engine (MCG-API-swappable)
+    feeds/               # pluggable EHR adapters
+      base.py            #   TrackboardFeed interface
+      synthetic.py       #   bundled demo data
+      fhir.py            #   Epic + Cerner (shared FHIR R4 mapper, LOINC table)
+      hl7.py             #   Pulsecheck / HL7v2 ADT parser
+      registry.py        #   name -> feed factory
     notifier.py          # ConsoleNotifier (default) + disabled TigerConnect stub
     audit.py             # append-only JSONL audit log
     pipeline.py          # feed -> screen -> notify -> audit
-    report.py            # HTML report for the admin demo
-    cli.py               # entry point
+    report.py            # static HTML report
+    live_demo.py         # animated live demo w/ physician ADMIT/DECLINE
+    cli.py               # entry point (--feed, --live, --html)
   tests/test_criteria_engine.py
+  tests/test_feeds.py
 ```
 
 ## Before this can touch a real patient
