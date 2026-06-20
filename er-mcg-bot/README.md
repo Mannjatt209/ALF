@@ -97,6 +97,19 @@ cd er-mcg-bot
 PYTHONPATH=src python -m unittest discover -s tests -v
 ```
 
+### Prove it runs off the network
+
+The screening path has no ML model and no third-party calls, so it runs with
+all internet egress blocked. To demonstrate that to a security reviewer:
+
+```bash
+python -m src.ermcgbot.cli --offline --feed synthetic   # blocks all egress, still works
+PYTHONPATH=src python -m unittest tests.test_offline -v  # proof test
+```
+
+See `docs/offline-deployment.md` for the internal-only / no-egress
+architecture, host hardening, file-drop ingestion, and the on-prem story.
+
 ## How the criteria engine works
 
 Each ruleset in `criteria/demo_criteria.json` has optional `all_of` (every

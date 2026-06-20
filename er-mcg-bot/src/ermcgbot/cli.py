@@ -67,7 +67,17 @@ def main(argv=None) -> int:
         "--live", default=None,
         help="write an animated live-simulation HTML demo here",
     )
+    parser.add_argument(
+        "--offline", action="store_true",
+        help="block all outbound network connections, then run (proves off-network operation)",
+    )
     args = parser.parse_args(argv)
+
+    if args.offline:
+        from .offline_guard import activate
+
+        activate()  # block-all; any phone-home attempt now raises
+        print("Offline guard ACTIVE — all outbound network connections blocked.\n")
 
     feed = build_feed(args.feed, args.feed_source, args.patients)
     patients = feed.fetch()
