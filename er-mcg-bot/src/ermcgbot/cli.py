@@ -11,6 +11,7 @@ import os
 
 from .audit import AuditLog
 from .criteria_engine import CriteriaEngine
+from .live_demo import load_json, render_live_html
 from .notifier import ConsoleNotifier
 from .pipeline import load_on_call, load_patients, run_screening
 from .report import render_html
@@ -29,7 +30,11 @@ def main(argv=None) -> int:
     parser.add_argument("--criteria", default=_default("criteria/demo_criteria.json"))
     parser.add_argument("--on-call", default=_default("data/on_call.json"))
     parser.add_argument("--audit", default=_default("data/audit_log.jsonl"))
-    parser.add_argument("--html", default=None, help="write an HTML report here")
+    parser.add_argument("--html", default=None, help="write a static HTML report here")
+    parser.add_argument(
+        "--live", default=None,
+        help="write an animated live-simulation HTML demo here",
+    )
     args = parser.parse_args(argv)
 
     patients = load_patients(args.patients)
@@ -51,6 +56,16 @@ def main(argv=None) -> int:
         with open(args.html, "w", encoding="utf-8") as fh:
             fh.write(render_html(results))
         print(f"HTML report written to {args.html}")
+
+    if args.live:
+        live = render_live_html(
+            load_json(args.patients),
+            load_json(args.criteria),
+            load_json(args.on_call),
+        )
+        with open(args.live, "w", encoding="utf-8") as fh:
+            fh.write(live)
+        print(f"Live demo written to {args.live} — open it in a browser.")
 
     return 0
 

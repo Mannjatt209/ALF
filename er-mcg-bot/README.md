@@ -39,7 +39,21 @@ PYTHONPATH=src python -m ermcgbot.cli --html report.html
 ```
 
 This prints a dry-run of each physician message, writes an audit trail to
-`data/audit_log.jsonl`, and produces `report.html` — the visual to show admin.
+`data/audit_log.jsonl`, and produces `report.html` — the static visual to show admin.
+
+### See it run live
+
+```bash
+python -m src.ermcgbot.cli --live live_demo.html
+```
+
+Open `live_demo.html` in any browser and press **Start shift**. Patients arrive
+on the trackboard over time; the bot scans each one and fires a dry-run secure
+message to the on-call physician when criteria are met. It's a single
+self-contained file (no server, no network) that embeds the same synthetic data
+and criteria the Python engine uses — the in-browser screening logic mirrors
+`criteria_engine.py`, so the demo and backend can't drift (both flag 8 of 12).
+This is the version to project in the admin meeting.
 
 ### Run the tests
 
