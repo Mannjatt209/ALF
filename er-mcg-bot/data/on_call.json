@@ -1,0 +1,7 @@
+{
+  "_note": "Synthetic on-call roster. Handles are secure-messaging identifiers (e.g. TigerConnect), NOT phone numbers. No real people.",
+  "on_call": {
+    "Hospitalist": { "physician": "Dr. A. Rivera (demo)", "handle": "hospitalist-oncall" },
+    "Cardiology": { "physician": "Dr. K. Osei (demo)", "handle": "cards-oncall" }
+  }
+}

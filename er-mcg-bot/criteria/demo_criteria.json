@@ -1,0 +1,68 @@
+{
+  "_disclaimer": "DEMONSTRATION CRITERIA ONLY. These illustrative rules are NOT MCG / Milliman Care Guidelines content and are NOT validated for clinical use. In production this file is replaced by the licensed MCG Cite / Indicia API. A physician makes every admission decision.",
+  "rulesets": [
+    {
+      "id": "sepsis_lactate",
+      "label": "Possible sepsis (elevated lactate + SIRS)",
+      "description": "Illustrative: elevated lactate with abnormal vitals.",
+      "service": "Hospitalist",
+      "recommended_status": "Inpatient",
+      "all_of": [
+        { "field": "labs.lactate", "op": ">=", "value": 2.0 }
+      ],
+      "any_of": [
+        { "field": "vitals.hr", "op": ">", "value": 90 },
+        { "field": "vitals.rr", "op": ">", "value": 20 },
+        { "field": "vitals.temp_c", "op": ">=", "value": 38.0 },
+        { "field": "labs.wbc", "op": ">", "value": 12.0 }
+      ]
+    },
+    {
+      "id": "acs_troponin",
+      "label": "Possible ACS (elevated troponin)",
+      "description": "Illustrative: chest pain with positive troponin.",
+      "service": "Cardiology",
+      "recommended_status": "Inpatient",
+      "all_of": [
+        { "field": "labs.troponin_ng_l", "op": ">=", "value": 52 },
+        { "field": "flags.chest_pain", "op": "==", "value": true }
+      ]
+    },
+    {
+      "id": "hypoxic_resp_failure",
+      "label": "Hypoxia / respiratory distress",
+      "description": "Illustrative: low oxygen saturation or supplemental O2 need.",
+      "service": "Hospitalist",
+      "recommended_status": "Inpatient",
+      "any_of": [
+        { "field": "vitals.spo2", "op": "<", "value": 90 },
+        { "field": "flags.on_supplemental_o2", "op": "==", "value": true }
+      ]
+    },
+    {
+      "id": "gi_bleed_anemia",
+      "label": "GI bleed with significant anemia",
+      "description": "Illustrative: GI bleeding flag with low hemoglobin.",
+      "service": "Hospitalist",
+      "recommended_status": "Inpatient",
+      "all_of": [
+        { "field": "flags.gi_bleed", "op": "==", "value": true },
+        { "field": "labs.hgb", "op": "<", "value": 8.0 }
+      ]
+    },
+    {
+      "id": "dehydration_obs",
+      "label": "Dehydration / AKI (observation)",
+      "description": "Illustrative: acute kidney injury marker, observation level.",
+      "service": "Hospitalist",
+      "recommended_status": "Observation",
+      "all_of": [
+        { "field": "labs.creatinine", "op": ">=", "value": 1.8 }
+      ],
+      "any_of": [
+        { "field": "vitals.hr", "op": ">", "value": 100 },
+        { "field": "vitals.sbp", "op": "<", "value": 100 }
+      ]
+    }
+  ]
+}
