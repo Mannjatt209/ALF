@@ -72,6 +72,12 @@ the same `Patient` model, so nothing downstream changes when you switch vendors.
 | `epic` | Epic | SMART-on-FHIR **R4** | Mapping working (offline replay of a FHIR bundle); live transport gated on creds + BAA |
 | `cerner` | Cerner / Oracle Health | SMART-on-FHIR **R4** | Same shared R4 mapper as Epic |
 | `pulsecheck` / `hl7` | Pulsecheck / interface engine | **HL7v2 ADT** | Demographics + location parsed; clinical values need an ORU results feed |
+| `csv` | Flat-file export (**no API key**) | CSV on a share | Fully working; easiest keyless option |
+| `filedrop` | Interface-engine drop folder (**no API key**) | HL7 files in a directory | Fully working; reads HL7 from a watched folder |
+
+**No API key?** Several feeds need none — see `docs/keyless-integration.md`.
+The `csv` and `filedrop` feeds use ordinary file exports IT can set up with
+existing tooling, no live interface and no portable secret.
 
 Try the adapters offline (no credentials needed):
 

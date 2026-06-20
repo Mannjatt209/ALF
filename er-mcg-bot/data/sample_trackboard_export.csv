@@ -1,0 +1,6 @@
+mrn,name,age,sex,bed,arrival_time,chief_complaint,hr,sbp,dbp,rr,temp_c,spo2,lactate,troponin_ng_l,wbc,creatinine,hgb,chest_pain,on_supplemental_o2,gi_bleed
+SYN-4001,Csv Patient One,67,M,ED-04,2026-06-20T06:12,Fever and weakness,112,96,58,24,38.7,95,3.4,8,16.2,1.2,12.1,false,false,false
+SYN-4002,Csv Patient Two,54,F,ED-07,2026-06-20T05:48,Chest pain,88,138,84,18,36.9,98,1.1,120,7.8,0.9,13.4,true,false,false
+SYN-4003,Csv Patient Three,41,M,ED-11,2026-06-20T07:01,Ankle sprain,76,124,78,16,36.7,99,0.9,4,6.5,1.0,14.2,false,false,false
+SYN-4004,Csv Patient Four,73,F,ED-02,2026-06-20T04:30,Shortness of breath,104,118,72,26,37.2,86,1.6,14,9.1,1.1,11.8,false,true,false
+SYN-4005,Csv Patient Five,60,M,ED-09,2026-06-20T03:55,Black stools and dizziness,108,102,64,19,36.8,97,1.9,9,8.4,1.3,6.9,false,false,true

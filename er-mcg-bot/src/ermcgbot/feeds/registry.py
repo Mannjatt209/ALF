@@ -9,7 +9,9 @@ from __future__ import annotations
 from typing import Any
 
 from .base import TrackboardFeed
+from .csv_feed import CsvFeed
 from .fhir import CernerFhirFeed, EpicFhirFeed
+from .filedrop import FileDropFeed
 from .hl7 import Hl7AdtFeed
 from .synthetic import SyntheticFeed
 
@@ -20,6 +22,8 @@ _FEEDS = {
     "cerner": CernerFhirFeed,
     "pulsecheck": Hl7AdtFeed,  # Pulsecheck typically integrates via HL7v2 ADT
     "hl7": Hl7AdtFeed,
+    "csv": CsvFeed,            # flat-file export, no API key
+    "filedrop": FileDropFeed,  # interface-engine HL7 drop folder, no API key
 }
 
 

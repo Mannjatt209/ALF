@@ -45,6 +45,10 @@ def build_feed(name: str, source: str, default_patients: str):
             # ADT messages in the sample file are separated by a blank line.
             messages = [m for m in fh.read().split("\n\n") if m.strip()]
         return get_feed(name, messages=messages)
+    if name == "csv":
+        return get_feed("csv", path=source or _default("data/sample_trackboard_export.csv"))
+    if name == "filedrop":
+        return get_feed("filedrop", directory=source or _default("data"))
     raise ValueError(f"Unknown feed {name!r}. Available: {available_feeds()}")
 
 

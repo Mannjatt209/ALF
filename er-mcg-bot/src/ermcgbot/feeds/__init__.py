@@ -1,12 +1,14 @@
 """Pluggable EHR trackboard feeds (synthetic, Epic, Cerner, Pulsecheck/HL7)."""
 
 from .base import FeedNotConfigured, TrackboardFeed
+from .csv_feed import CsvFeed
 from .fhir import (
     CernerFhirFeed,
     EpicFhirFeed,
     FhirTrackboardFeed,
     map_bundle_to_patients,
 )
+from .filedrop import FileDropFeed
 from .hl7 import Hl7AdtFeed, parse_adt_message
 from .registry import available_feeds, get_feed
 from .synthetic import SyntheticFeed
@@ -21,6 +23,8 @@ __all__ = [
     "map_bundle_to_patients",
     "Hl7AdtFeed",
     "parse_adt_message",
+    "CsvFeed",
+    "FileDropFeed",
     "get_feed",
     "available_feeds",
 ]
