@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="LifeLine Adult Family Home in Marysville, Washington — compassionate, state-licensed residential care in a warm 5-bedroom home. Learn about our mission, services, and resources for families." />
+  <meta name="description" content="LifeLine Adult Family Home in Marysville, Washington — compassionate, state-licensed residential care for up to five residents in a warm family home. Schedule a tour today." />
   <title>LifeLine Adult Family Home | Marysville, WA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,600&family=Nunito+Sans:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>" />
 </head>
 <body>
 
-  <!-- ============ HEADER / NAV ============ -->
-  <header class="site-header" id="top">
+  <header class="site-header">
     <nav class="nav container" aria-label="Main navigation">
-      <a href="#top" class="brand">
+      <a href="index.html" class="brand">
         <span class="brand-mark" aria-hidden="true">❤</span>
         <span class="brand-text">LifeLine <small>Adult Family Home</small></span>
       </a>
@@ -23,70 +23,61 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-menu" id="navMenu">
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#mission">Our Mission</a></li>
-        <li><a href="#home-tour">Our Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#families">Family Resources</a></li>
-        <li><a href="#licensing">Licensing &amp; Rights</a></li>
-        <li><a href="#contact" class="nav-cta">Contact</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services &amp; Care</a></li>
+        <li><a href="families.html">For Families</a></li>
+        <li><a href="contact.html" class="nav-cta">Schedule a Visit</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
 
-    <!-- ============ HERO ============ -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <p class="hero-eyebrow">Marysville, Washington</p>
-        <h1>Care That Feels Like <em>Family</em></h1>
-        <p class="hero-sub">
-          LifeLine is a state-licensed Adult Family Home offering compassionate,
-          around-the-clock care for up to five residents in a warm, comfortable
-          residential setting — because your loved one deserves more than a facility.
-          They deserve a home.
-        </p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Schedule a Visit</a>
-          <a href="#families" class="btn btn-ghost">Resources for Families</a>
+    <!-- Hero -->
+    <section class="hero" style="--hero-img: url('https://images.unsplash.com/photo-1604882234072-d5741489e0c0?auto=format&fit=crop&w=1800&q=80');">
+      <div class="container">
+        <div class="hero-inner">
+          <span class="eyebrow">Marysville, Washington</span>
+          <h1>Care that feels like <em>family</em></h1>
+          <p class="lead">
+            LifeLine is a state-licensed Adult Family Home offering compassionate,
+            around-the-clock care for up to five residents in a warm, comfortable
+            residential setting — because your loved one deserves more than a
+            facility. They deserve a home.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="contact.html">Schedule a Visit</a>
+            <a class="btn btn-ghost" href="families.html">Resources for Families</a>
+          </div>
+          <div class="hero-badges">
+            <span>🏡 5-Bed Residential Home</span>
+            <span>🕐 24-Hour Care &amp; Supervision</span>
+            <span>📋 Licensed by WA DSHS</span>
+          </div>
         </div>
-        <ul class="hero-badges" aria-label="Highlights">
-          <li>🏡 5-Bed Residential Home</li>
-          <li>🕐 24-Hour Care &amp; Supervision</li>
-          <li>📋 Licensed by WA DSHS</li>
-        </ul>
       </div>
     </section>
 
-    <!-- ============ ABOUT ============ -->
-    <section class="section" id="about">
-      <div class="container grid-2">
-        <div>
-          <p class="eyebrow">About Us</p>
-          <h2>A Personal Commitment to Dignified Care</h2>
-          <p>
-            Hello, and welcome. My name is <strong>Manpreet Kaur</strong>, and I am the
-            founder and provider at LifeLine Adult Family Home. After years of working
-            as a registered nurse, I opened LifeLine with one simple belief: every adult who
-            needs care deserves to receive it with dignity, warmth, and respect — in a
-            real home, surrounded by people who genuinely know them.
-          </p>
-          <p>
-            Our home in Marysville is intentionally small. With a maximum of six
-            residents, we can give each person the time, attention, and individualized
-            care that larger facilities simply cannot. We learn your loved one's
-            routines, their favorite meals, their stories, and their needs — and we
-            treat them the way we would want our own family treated.
-          </p>
-          <p>
-
-          </p>
+    <!-- Intro / why small -->
+    <section class="section">
+      <div class="container split">
+        <div class="imgwrap reveal">
+          <div class="img-accent"></div>
+          <img src="https://images.unsplash.com/photo-1593701805506-523fb08488d7?auto=format&fit=crop&w=900&q=80" alt="A caregiver gently holding an elderly resident's hands" />
         </div>
-        <div class="about-card">
-          <h3>Why a Small Home Matters</h3>
-          <ul class="check-list">
-            <li>High caregiver-to-resident ratio</li>
+        <div class="text reveal">
+          <span class="eyebrow">A Different Kind of Care</span>
+          <h2>Small by design. Personal by promise.</h2>
+          <p>
+            Our home in Marysville is intentionally small. With a maximum of five
+            residents, we give each person the time, attention, and individualized
+            care that larger facilities simply cannot. We learn your loved one's
+            routines, favorite meals, stories, and needs — and treat them the way
+            we would want our own family treated.
+          </p>
+          <ul class="checklist">
+            <li>High caregiver-to-resident ratio, every hour of every day</li>
             <li>Consistent, familiar caregivers — not rotating shifts of strangers</li>
             <li>Home-cooked meals tailored to preferences and dietary needs</li>
             <li>Quiet, low-stress environment that reduces anxiety and confusion</li>
@@ -96,364 +87,157 @@
       </div>
     </section>
 
-    <!-- ============ MISSION ============ -->
-    <section class="section section-tinted" id="mission">
-      <div class="container narrow center">
-        <p class="eyebrow">Our Mission</p>
-        <h2>Our Lifeline Promise</h2>
-        <p class="lead">
-          To provide safe, compassionate, and personalized care that honors the
-          dignity, independence, and individuality of every resident — giving
-          families peace of mind and residents a place that truly feels like home.
-        </p>
-      </div>
-      <div class="container values-grid">
-        <div class="value-card">
-          <div class="value-icon" aria-hidden="true">🤝</div>
-          <h3>Dignity First</h3>
-          <p>Every resident is treated with respect, privacy, and kindness — in every interaction, every day.</p>
-        </div>
-        <div class="value-card">
-          <div class="value-icon" aria-hidden="true">🛡️</div>
-          <h3>Safety &amp; Trust</h3>
-          <p>Trained caregivers, 24-hour supervision, and full compliance with Washington State care standards.</p>
-        </div>
-        <div class="value-card">
-          <div class="value-icon" aria-hidden="true">🌱</div>
-          <h3>Whole-Person Wellness</h3>
-          <p>We care for body, mind, and spirit — with activities, nutrition, and genuine companionship.</p>
-        </div>
-        <div class="value-card">
-          <div class="value-icon" aria-hidden="true">💬</div>
-          <h3>Open Communication</h3>
-          <p>Families are partners in care. We keep you informed, involved, and always welcome.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ OUR HOME ============ -->
-    <section class="section" id="home-tour">
+    <!-- Promise pillars -->
+    <section class="section tint">
       <div class="container">
-        <p class="eyebrow center">Our Home</p>
-        <h2 class="center">A Comfortable Home in the Heart of Marysville</h2>
-        <p class="lead center narrow">
-          LifeLine is a spacious five-bedroom residential home — not an institution.
-          Residents enjoy private comfort with the warmth of shared family living.
-        </p>
-        <div class="features-grid">
-          <div class="feature">
-            <h3>🛏️ Resident Rooms</h3>
-            <p>Comfortable bedrooms that residents are encouraged to personalize with their own furnishings, photos, and keepsakes.</p>
+        <div class="section-head center reveal">
+          <span class="eyebrow">Our LifeLine Promise</span>
+          <h2>Four commitments we make to every family</h2>
+        </div>
+        <div class="grid cols-4">
+          <div class="card reveal">
+            <div class="icon">🤝</div>
+            <h3>Dignity First</h3>
+            <p>Every resident is treated with respect, privacy, and kindness — in every interaction, every day.</p>
           </div>
-          <div class="feature">
-            <h3>🍽️ Home-Cooked Meals</h3>
-            <p>Three nutritious meals plus snacks daily, prepared in our kitchen and adapted to dietary needs and personal preferences.</p>
+          <div class="card reveal">
+            <div class="icon">🛡️</div>
+            <h3>Safety &amp; Trust</h3>
+            <p>Trained caregivers, 24-hour supervision, and full compliance with Washington State care standards.</p>
           </div>
-          <div class="feature">
-            <h3>🌳 Outdoor Spaces</h3>
-            <p>A safe, accessible yard and patio area for fresh air, gardening, and relaxing in the Pacific Northwest sunshine.</p>
+          <div class="card reveal">
+            <div class="icon">🌱</div>
+            <h3>Whole-Person Wellness</h3>
+            <p>We care for body, mind, and spirit — with activities, nutrition, and genuine companionship.</p>
           </div>
-          <div class="feature">
-            <h3>🛋️ Shared Living Areas</h3>
-            <p>Cozy common rooms for visiting with family, activities, entertainment, and connecting with fellow residents.</p>
-          </div>
-          <div class="feature">
-            <h3>♿ Accessibility</h3>
-            <p>Designed for safety and mobility, with accommodations to support residents with varying levels of need.</p>
-          </div>
-          <div class="feature">
-            <h3>📍 Convenient Location</h3>
-            <p>Located in Marysville, WA — close to medical providers, pharmacies, and easy freeway access for visiting families.</p>
+          <div class="card reveal">
+            <div class="icon">💬</div>
+            <h3>Open Communication</h3>
+            <p>Families are partners in care. We keep you informed, involved, and always welcome.</p>
           </div>
         </div>
-        <p class="note center">
-          📷 <em>Photo gallery coming soon — schedule a tour to see our home in person.</em>
-        </p>
       </div>
     </section>
 
-    <!-- ============ SERVICES ============ -->
-    <section class="section section-tinted" id="services">
+    <!-- Home tour preview -->
+    <section class="section">
       <div class="container">
-        <p class="eyebrow center">Services &amp; Care</p>
-        <h2 class="center">Personalized Care, Around the Clock</h2>
-        <p class="lead center narrow">
-          Every resident receives an individualized care plan developed with the
-          resident, their family, and health professionals — and reviewed regularly
-          as needs change.
-        </p>
-        <div class="grid-2 services-grid">
-          <div class="service-col">
-            <h3>Daily Living Support</h3>
-            <ul class="check-list">
-              <li>Assistance with bathing, dressing, and grooming</li>
-              <li>Medication management and reminders</li>
-              <li>Mobility and transfer assistance</li>
-              <li>Incontinence care</li>
-              <li>Housekeeping and laundry</li>
-              <li>Nutritious home-cooked meals and special diets</li>
-            </ul>
+        <div class="section-head center reveal">
+          <span class="eyebrow">Our Home</span>
+          <h2>A comfortable home in the heart of Marysville</h2>
+          <p>A spacious five-bedroom residential home — not an institution. Private comfort with the warmth of shared family living.</p>
+        </div>
+        <div class="grid cols-4">
+          <div class="photo-card reveal">
+            <img src="https://images.unsplash.com/photo-1606796913825-2b02883605e9?auto=format&fit=crop&w=700&q=80" alt="A bright, sunlit bedroom with soft bedding" />
+            <div class="body">
+              <h3>🛏️ Resident Rooms</h3>
+              <p>Comfortable bedrooms residents personalize with their own furnishings, photos, and keepsakes.</p>
+            </div>
           </div>
-          <div class="service-col">
-            <h3>Health &amp; Wellbeing</h3>
-            <ul class="check-list">
-              <li>24-hour supervision and on-call support</li>
-              <li>Coordination with physicians, nurses, and home health</li>
-              <li>Appointment scheduling and transportation coordination</li>
-              <li>Social activities, games, and companionship</li>
-              <li>Family communication and care updates</li>
-              <li>Respite and long-term care options</li>
-            </ul>
+          <div class="photo-card reveal">
+            <img src="https://images.unsplash.com/photo-1773912309963-f4cf04d5d962?auto=format&fit=crop&w=700&q=80" alt="A warm family dinner table with home-cooked food and fresh flowers" />
+            <div class="body">
+              <h3>🍽️ Home-Cooked Meals</h3>
+              <p>Three nutritious meals plus snacks daily, adapted to dietary needs and personal preferences.</p>
+            </div>
+          </div>
+          <div class="photo-card reveal">
+            <img src="https://images.unsplash.com/photo-1444392061186-9fc38f84f726?auto=format&fit=crop&w=700&q=80" alt="A green backyard garden with a birdhouse" />
+            <div class="body">
+              <h3>🌳 Outdoor Spaces</h3>
+              <p>A safe, accessible yard and patio for fresh air, gardening, and Pacific Northwest sunshine.</p>
+            </div>
+          </div>
+          <div class="photo-card reveal">
+            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80" alt="A cozy living room with a comfortable armchair" />
+            <div class="body">
+              <h3>🛋️ Shared Living Areas</h3>
+              <p>Cozy common rooms for visiting with family, activities, entertainment, and connection.</p>
+            </div>
           </div>
         </div>
-        <p class="note center">
-          <em>Specialty care designations (such as dementia, mental health, or
-          developmental disabilities) are listed on our DSHS license. Please ask us
-          about the specific care needs we are licensed and trained to support.</em>
-        </p>
       </div>
     </section>
 
-    <!-- ============ FAMILY RESOURCES / WHAT IS AN AFH ============ -->
-    <section class="section" id="families">
+    <!-- Stats -->
+    <section class="section tint">
       <div class="container">
-        <p class="eyebrow center">For Families</p>
-        <h2 class="center">What Is an Adult Family Home?</h2>
-        <p class="lead center narrow">
-          Choosing care for a loved one is one of the biggest decisions a family can
-          make. Here are answers to the questions families ask us most.
-        </p>
-
-        <div class="faq" id="faqList">
-          <details class="faq-item">
-            <summary>What exactly is an Adult Family Home (AFH)?</summary>
-            <p>
-              An Adult Family Home is a regular residential home licensed by the
-              Washington State Department of Social and Health Services (DSHS) to
-              provide housing, meals, laundry, supervision, and personal care to a
-              small number of adults (LifeLine is licensed for up to five residents).
-              AFHs are governed by Chapter 70.128 RCW and Chapter 388-76 WAC, and are
-              regularly inspected by the state.
-            </p>
-          </details>
-          <details class="faq-item">
-            <summary>How is an Adult Family Home different from assisted living or a nursing home?</summary>
-            <p>
-              Assisted living facilities and nursing homes are larger, institutional
-              settings that may serve dozens or hundreds of residents. An Adult Family
-              Home offers many of the same personal care services in a true house, with
-              far fewer residents and a much more personal, family-style atmosphere.
-              Many families find AFHs offer more individual attention at a comparable
-              or lower cost.
-            </p>
-          </details>
-          <details class="faq-item">
-            <summary>Who is a good fit for LifeLine?</summary>
-            <p>
-              Adults who need help with daily activities — such as bathing, dressing,
-              medications, meals, or mobility — but who want to live in a comfortable
-              home rather than a large facility. During our assessment process, we
-              evaluate each person's needs to make sure we can provide safe,
-              appropriate care within the scope of our license.
-            </p>
-          </details>
-          <details class="faq-item">
-            <summary>How does the move-in process work?</summary>
-            <p>
-              It starts with a conversation and a tour. From there, Washington State
-              requires a full assessment and a negotiated care plan before admission,
-              along with a disclosure of services and a written admission agreement
-              so you know exactly what care and services are provided and what they
-              cost. We walk families through every step.
-            </p>
-          </details>
-          <details class="faq-item">
-            <summary>How is care paid for?</summary>
-            <p>
-              Residents may pay privately, and many Adult Family Homes also serve
-              residents whose care is funded through Washington Medicaid programs
-              (such as COPES) administered by DSHS. Long-term care insurance and VA
-              benefits may also apply. Contact us and we'll help you understand the
-              options for your situation.
-            </p>
-          </details>
-          <details class="faq-item">
-            <summary>Can family visit? How will we stay informed?</summary>
-            <p>
-              Always. Families are welcome here, and residents have the right to
-              visitors of their choosing. We provide regular updates and encourage
-              ongoing involvement in care planning — you remain a central part of
-              your loved one's life and care.
-            </p>
-          </details>
-          <details class="faq-item">
-            <summary>How do I verify a home's license and inspection history?</summary>
-            <p>
-              You can look up any Adult Family Home's license status, capacity,
-              specialty designations, and inspection reports using the DSHS
-              <a href="https://fortress.wa.gov/dshs/adsaapps/lookup/AFHPubLookup.aspx" target="_blank" rel="noopener noreferrer">Adult Family Home Locator</a>.
-              We encourage every family to do this for any home they consider —
-              including ours.
-            </p>
-          </details>
+        <div class="stats">
+          <div class="stat reveal">
+            <div class="num">5</div>
+            <div class="label">Residents maximum — never crowded, always personal</div>
+          </div>
+          <div class="stat reveal">
+            <div class="num">24/7</div>
+            <div class="label">Care &amp; supervision, day and night</div>
+          </div>
+          <div class="stat reveal">
+            <div class="num">1</div>
+            <div class="label">Home. Real bedrooms, real kitchen, real family living</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ LICENSING & RESIDENT RIGHTS ============ -->
-    <section class="section section-dark" id="licensing">
+    <!-- CTA -->
+    <section class="section">
       <div class="container">
-        <p class="eyebrow center">Licensing &amp; Resident Rights</p>
-        <h2 class="center">Licensed, Inspected &amp; Accountable</h2>
-        <p class="lead center narrow">
-          LifeLine Adult Family Home operates under license from the Washington State
-          Department of Social and Health Services and complies with all applicable
-          state laws and regulations.
-        </p>
-
-        <div class="license-box center">
-          <p><strong>Washington State AFH License #:</strong> [LICENSE NUMBER]</p>
-          <p><strong>Licensed Provider:</strong> Manpreet Kaur</p>
-          <p><strong>Licensed Capacity:</strong> 5 residents</p>
-        </div>
-
-        <div class="grid-2">
-          <div>
-            <h3>Your Loved One's Rights</h3>
-            <p>
-              Every resident of a Washington Adult Family Home is protected by the
-              state resident rights law (Chapter 70.129 RCW), which includes the
-              right to:
-            </p>
-            <ul class="check-list light">
-              <li>Be treated with dignity and respect</li>
-              <li>Privacy and confidentiality</li>
-              <li>Participate in their own care planning</li>
-              <li>Be free from abuse, neglect, and exploitation</li>
-              <li>Manage their own finances</li>
-              <li>Voice concerns without fear of retaliation</li>
-              <li>Receive visitors and communicate freely</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Oversight &amp; Advocacy Resources</h3>
-            <ul class="resource-list">
-              <li>
-                <a href="https://www.dshs.wa.gov/altsa/residential-care-services/adult-family-home-locator" target="_blank" rel="noopener noreferrer">DSHS Adult Family Home Locator</a>
-                — verify licenses and view inspection reports
-              </li>
-              <li>
-                <a href="https://app.leg.wa.gov/RCW/default.aspx?cite=70.128" target="_blank" rel="noopener noreferrer">Chapter 70.128 RCW</a>
-                — Adult Family Homes law
-              </li>
-              <li>
-                <a href="https://app.leg.wa.gov/wac/default.aspx?cite=388-76" target="_blank" rel="noopener noreferrer">Chapter 388-76 WAC</a>
-                — Adult Family Home licensing rules
-              </li>
-              <li>
-                <a href="https://app.leg.wa.gov/RCW/default.aspx?cite=70.129" target="_blank" rel="noopener noreferrer">Chapter 70.129 RCW</a>
-                — Long-term care resident rights
-              </li>
-              <li>
-                <a href="https://www.waombudsman.org/" target="_blank" rel="noopener noreferrer">WA Long-Term Care Ombudsman</a>
-                — free, independent resident advocacy: 1-800-562-6028
-              </li>
-              <li>
-                <strong>DSHS Complaint Resolution Unit:</strong> 1-800-562-6078
-              </li>
-              <li>
-                <strong>End Harm (abuse reporting):</strong> 1-866-363-4276
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <p class="note light center">
-          We are committed to non-discrimination: LifeLine does not discriminate on
-          the basis of race, color, national origin, religion, sex, gender identity,
-          sexual orientation, age, or disability in admission or care.
-        </p>
-      </div>
-    </section>
-
-    <!-- ============ CONTACT ============ -->
-    <section class="section" id="contact">
-      <div class="container grid-2">
-        <div>
-          <p class="eyebrow">Contact Us</p>
-          <h2>Come See Our Home</h2>
-          <p>
-            The best way to know if LifeLine is right for your loved one is to visit.
-            Reach out to schedule a tour, ask questions, or talk through your family's
-            situation — there's never any pressure.
-          </p>
-          <ul class="contact-list">
-            <li><strong>📍 Address:</strong> 8021 47th Ave NE, Marysville, WA 98270</li>
-            <li><strong>📞 Phone:</strong> <a href="tel:+14253874807">(425) 387-4807</a></li>
-            <li><strong>✉️ Email:</strong> <a href="mailto:info@lifelineafh.com">[info@lifelineafh.com]</a></li>
-            <li><strong>🕐 Tours:</strong> Available by appointment, 7 days a week</li>
-          </ul>
-        </div>
-        <div class="contact-card">
-          <h3>Send Us a Message</h3>
-          <form id="contactForm" novalidate>
-            <label for="name">Your Name <span aria-hidden="true">*</span></label>
-            <input type="text" id="name" name="name" autocomplete="name" required />
-
-            <label for="email">Email <span aria-hidden="true">*</span></label>
-            <input type="email" id="email" name="email" autocomplete="email" required />
-
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" autocomplete="tel" />
-
-            <label for="message">How can we help? <span aria-hidden="true">*</span></label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-
-            <button type="submit" class="btn btn-primary btn-block">Send Message</button>
-            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-          </form>
+        <div class="cta-banner reveal" style="--cta-img: url('https://images.unsplash.com/photo-1658632302217-984d432b4d38?auto=format&fit=crop&w=1600&q=80');">
+          <h2>The best way to know is to visit</h2>
+          <p>Come see our home, meet our caregivers, and talk through your family's situation — there's never any pressure.</p>
+          <a class="btn btn-primary" href="contact.html">Schedule a Tour</a>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ============ FOOTER ============ -->
   <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <p class="footer-brand">❤ LifeLine Adult Family Home</p>
-        <p>Compassionate residential care in Marysville, Washington.</p>
-        <p>WA AFH License #: [LICENSE NUMBER]</p>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <span class="brand-mark" aria-hidden="true">❤</span>
+            <span class="brand-text">LifeLine <small>Adult Family Home</small></span>
+          </div>
+          <p>Compassionate residential care in Marysville, Washington.</p>
+          <p style="margin-top:12px;">WA AFH License #: [LICENSE NUMBER]</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services &amp; Care</a></li>
+            <li><a href="families.html">For Families</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>State Resources</h4>
+          <ul>
+            <li><a href="https://www.dshs.wa.gov/altsa" target="_blank" rel="noopener">DSHS / ALTSA</a></li>
+            <li><a href="https://www.waombudsman.org/" target="_blank" rel="noopener">LTC Ombudsman</a></li>
+            <li>Complaint Line: 1-800-562-6078</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Visit Us</h4>
+          <ul>
+            <li>📍 8021 47th Ave NE,<br />Marysville, WA 98270</li>
+            <li>📞 <a href="tel:+14253874807">(425) 387-4807</a></li>
+            <li>🕐 Tours by appointment,<br />7 days a week</li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <p class="footer-heading">Quick Links</p>
-        <ul>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#families">Family Resources</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+      <div class="fineprint">
+        © <span class="year"></span> LifeLine Adult Family Home. All rights reserved.<br />
+        This website is for general information only and is not legal, medical, or financial advice.
+        Licensing details should be verified through the Washington State DSHS Adult Family Home Locator.
       </div>
-      <div>
-        <p class="footer-heading">State Resources</p>
-        <ul>
-          <li><a href="https://www.dshs.wa.gov/altsa" target="_blank" rel="noopener noreferrer">DSHS / ALTSA</a></li>
-          <li><a href="https://www.waombudsman.org/" target="_blank" rel="noopener noreferrer">LTC Ombudsman</a></li>
-          <li>Complaint Line: 1-800-562-6078</li>
-        </ul>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <p>&copy; <span id="year"></span> LifeLine Adult Family Home. All rights reserved.</p>
-      <p class="disclaimer">
-        This website is for general information only and is not legal, medical, or
-        financial advice. Licensing details should be verified through the Washington
-        State DSHS Adult Family Home Locator.
-      </p>
     </div>
   </footer>
 
-  <script src="js/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
