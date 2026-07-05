@@ -42,6 +42,19 @@ h1, h2, h3, h4 { font-family: var(--font-head); font-weight: 600; line-height: 1
 a { color: var(--terracotta); text-decoration: none; }
 a:hover { color: var(--terracotta-dark); }
 
+/* ---------- Announcement bar ---------- */
+.announce {
+  background: linear-gradient(90deg, var(--sage-dark), var(--sage));
+  color: #fff; font-size: 15px; padding: 11px 0;
+}
+.announce-inner { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; text-align: center; }
+.announce strong { color: #FBE3A0; }
+.announce a {
+  color: #fff; font-weight: 800; white-space: nowrap;
+  border-bottom: 2px solid rgba(255,255,255,0.55);
+}
+.announce a:hover { color: #FBE3A0; border-bottom-color: #FBE3A0; }
+
 /* ---------- Header ---------- */
 .site-header {
   position: sticky; top: 0; z-index: 100;
